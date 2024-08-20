@@ -1,0 +1,1094 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Frappé – Frappé – A Smoothie and Organic Juice Bar Theme</title>
+         <!-- aos-animation -->
+         <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+        <!-- favicon-icon -->
+        <link rel="shortcut icon" href="../images/h1-img-1.png">
+        <!-- style-css -->
+        <link rel="stylesheet" href="../css/style.css">
+        <link rel="stylesheet" href="../../src/index.css">
+        <!-- swiper -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+        <!-- all-min -->
+        <link rel="stylesheet" href="../css/all.min.css">
+        <!-- slider -->
+        <link rel="stylesheet" href="../css/owl.carousel.min.css">
+        <link rel="stylesheet" href="../css/owl.theme.default.min.css">
+        <link rel="stylesheet" href="../css/swiper-bundle.min.css">
+        <!-- fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Dawning+of+a+New+Day&display=swap" rel="stylesheet">
+    </head>
+    <style>
+        .product-img {
+            position: relative;
+            margin-bottom: 15px;
+        }
+        .product-img::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            transition: 0.45s ease;
+        }
+        .product-item-icon-box{
+            --scale: 0.8;
+            color: #fff;
+            background: #FBBCC0;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 22px;
+            padding: 20px 30px;
+            border-radius: 50%;
+            opacity: 0;
+            z-index: 1;
+            transition:  0.45s ease;
+        }
+        .product-item-icon-box:hover{
+            --scale: 0.8;
+            color: #FBBCC0;
+            background: #fff;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 22px;
+            padding: 20px 30px;
+            border-radius: 50%;
+            opacity: 0;
+            z-index: 1;
+            transition:  0.45s ease;
+        }
+        .product-img{
+            overflow: hidden;
+        }
+        .product-img:hover .product-item-icon-box {
+            --scale: 1;
+            opacity: 1;
+        }
+        .product-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition:  0.25s ease;
+        }
+        .product-img:hover img {
+            transform: scale(1.1);
+        }
+    </style>
+    <style>
+        header{
+            width: 100%;
+            padding: 0px 0px;
+            cursor: pointer;
+        }
+        .header.fixed-header{
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            background-color: #ffffff;
+            z-index: 999;
+            transition: 0.2s linear;
+            box-shadow: 0px 5px 40px #d1d1d18f;
+        }
+        .header.fixed-header a{
+            color: #5A5A5A;
+        }
+        .up-button{
+            width: 50px;
+            height: 50px;
+            background-color:#ACE9B0 ;
+            border-radius: 50%;
+            bottom: 20px;
+            position: fixed;
+            right: 50px;
+            z-index: 999;
+        }
+        .up-button a svg{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 20px;
+            margin: 15px 15px;
+    
+        }
+    </style>
+    <style>
+        /* custom cursor */
+        .cursor {
+            pointer-events: none;
+            position: fixed;
+            z-index: 10;
+            top : 0;
+            left : 0;
+            display: block;
+            transition: opacity .3s linear;
+            opacity: 0;
+            width: 5px;
+            height: 5px;
+        }
+        .cursor.moving {
+            opacity: 1;
+        }
+        .cursor::before {
+            content: ' ';
+            height: 100%;
+            width: 100%;
+            position: absolute;
+            background-color: #FBBCC0;
+            border-radius: 50%;
+            top: 0;
+            left: 0;
+            opacity: 1;
+            transition: opacity .3s linear;
+        }
+        .cursor.expand::before {
+            opacity: 0;
+        }
+        .node {
+            pointer-events: none;
+            position: fixed;
+            z-index: 100;
+            top: 0;
+            left: 0;
+            display: block;
+            transition: opacity .3s linear;
+            opacity: 0;
+            width: 16px;
+            height: 16px;
+        }
+        .node.moving {
+            opacity: 1;
+        }
+        .node::before {
+            content: ' ';
+            height: 100%;
+            width: 100%;
+            position: absolute;
+            background-color: transparent;
+            border-radius: 50%;
+            top: 0;
+            left: 0;
+            border: 1px solid #ACE9B0;
+            transform: scale(1.5);
+            opacity: 1;
+            transition: opacity 300ms linear, transform 300ms linear, border 300ms linear, background-color 300ms linear;
+        
+        }
+        .node.expand::before {
+            transform: scale(3);
+            background-color: #ffffff;
+            opacity: 0.2;
+        }
+    </style>
+     <style>
+        .loader-warper{
+            width: 100%;
+            height: 100vh;
+            position: fixed;
+            overflow-y: hidden;
+            background-color: #fff;
+            z-index: 9999;
+        }
+        .loader{
+        background-image: url('../images/frappe-preloader.gif');
+        background-repeat: no-repeat;
+        width: 68px;
+        height: 160px;
+     
+    }
+    </style>
+<body>
+      <!-- back-to-top -->
+      <div class="up-button">
+        <a href="#">
+            <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 256 256" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M205.66,117.66a8,8,0,0,1-11.32,0L136,59.31V216a8,8,0,0,1-16,0V59.31L61.66,117.66a8,8,0,0,1-11.32-11.32l72-72a8,8,0,0,1,11.32,0l72,72A8,8,0,0,1,205.66,117.66Z"></path></svg>
+        </a>
+    </div>
+     <!-- loader -->
+     <div class="loader-warper flex items-center justify-center" id="loader-wrapp">
+        <div class="loader">
+
+        </div>
+    </div>
+    <header class="absolute w-full top-0 left-0 header">
+        <div class="container mx-auto">
+            <div class="row flex items-center">
+                <div class="w-40 py-6 max-lg:w-full">
+                    <img src="../images/logo-light-2.png">
+                </div>
+                <nav class="ml-20  max-lg:hidden max-xl:block">
+                    <ul class="flex text-white text-lg font-medium">
+                        <li class="flex items-center p-6 dropdown relative group">
+                            <a href="../index.html" class="hover:text-[#FCBBBF] duration-500">Home</a>
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                stroke="currentColor" class="w-3 h-3  ml-1">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+                            </svg>
+                            <div class="dropdown-content absolute top-[80%] left-0 bg-white opacity-0 invisible group-hover:opacity-100 group-hover:visible rounded-xl duration-500">
+                                <ul style="width: 200px; height: 200px;">
+                                    <li class="py-2 px-4 hover:translate-x-2 duration-500">
+                                        <a href="../index.html" class="text-sm text-[#5A5A5A] hover:text-[#FCBBBF] duration-500">Main Home</a>
+                                    </li>
+                                    <li class="py-2 px-4 hover:translate-x-2 duration-500">
+                                        <a href="../pages/juice_bar.html" class="text-sm text-[#5A5A5A] hover:text-[#FCBBBF] duration-500">Juice Bar</a>
+                                    </li>
+                                    <li class="py-2 px-4 hover:translate-x-2 duration-500">
+                                        <a href="../pages/verticle slider.html" class="text-sm text-[#5A5A5A] hover:text-[#FCBBBF] duration-500">Verticle showcase</a>
+                                    </li>
+                                    <li class="py-2 px-4 hover:translate-x-2 duration-500">
+                                        <a href="../pages/smoothie_home.html" class="text-sm text-[#5A5A5A] hover:text-[#FCBBBF] duration-500">Smoothie Home</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="flex items-center p-6 dropdown relative group">
+                            <a href="../pages/our-menu.html" class="hover:text-[#FCBBBF] duration-500">Menu</a>
+                        </li>
+                        <li class="flex items-center p-6 dropdown relative group">
+                            <a href="#" class="hover:text-[#FCBBBF] duration-500">Pages</a>
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                stroke="currentColor" class="w-3 h-3  ml-1">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+                            </svg>
+                            <div class="dropdown-content absolute top-[80%] left-0 bg-white opacity-0 invisible group-hover:opacity-100 group-hover:visible rounded-xl duration-500">
+                                <ul style="width: 200px; height: 150px;">
+                                    <li class="py-2 px-4 hover:translate-x-2 duration-500">
+                                        <a href="./pages/about_us.html" class="text-sm text-[#5A5A5A] hover:text-[#FCBBBF] duration-500">About Us</a>
+                                    </li>
+                                    <li class="py-2 px-4 hover:translate-x-2 duration-500">
+                                        <a href="../pages/what_we_do.html" class="text-sm text-[#5A5A5A] hover:text-[#FCBBBF] duration-500">What We Do</a>
+                                    </li>
+                                    <li class="py-2 px-4 hover:translate-x-2 duration-500">
+                                        <a href="../pages/our_team.html" class="text-sm text-[#5A5A5A] hover:text-[#FCBBBF] duration-500">Our Team</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="flex items-center p-6 dropdown relative group">
+                            <a href="#" class="hover:text-[#FCBBBF] duration-500">Gallery</a>
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                stroke="currentColor" class="w-3 h-3  ml-1">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+                            </svg>
+                            <div class="dropdown-content absolute top-[80%] left-0 bg-white opacity-0 invisible group-hover:opacity-100 group-hover:visible rounded-xl duration-500">
+                                <ul style="width: 200px; height: 200px;">
+                                    <li class="py-2 px-4 hover:translate-x-2 duration-500">
+                                        <a href="../pages/gallery-2-col.html" class="text-sm text-[#5A5A5A] hover:text-[#FCBBBF] duration-500">2 Column</a>
+                                    </li>
+                                    <li class="py-2 px-4 hover:translate-x-2 duration-500">
+                                        <a href="../pages/gallery-3-col.html" class="text-sm text-[#5A5A5A] hover:text-[#FCBBBF] duration-500">3 Column</a>
+                                    </li>
+                                    <li class="py-2 px-4 hover:translate-x-2 duration-500">
+                                        <a href="../pages/gallery-4-col.html" class="text-sm text-[#5A5A5A] hover:text-[#FCBBBF] duration-500">4 Column</a>
+                                    </li>
+                                    <li class="py-2 px-4 hover:translate-x-2 duration-500">
+                                        <a href="../pages/4_col_wide.html" class="text-sm text-[#5A5A5A] hover:text-[#FCBBBF] duration-500">4 Column Wide</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="flex items-center p-6 dropdown relative group">
+                            <a href="#" class="hover:text-[#FCBBBF] duration-500">Blog</a>
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                stroke="currentColor" class="w-3 h-3  ml-1">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+                            </svg>
+                            <div class="dropdown-content absolute top-[80%] left-0 bg-white opacity-0 invisible group-hover:opacity-100 group-hover:visible rounded-xl duration-500">
+                                <ul style="width: 200px; height: 150px;">
+                                    <li class="py-2 px-4 hover:translate-x-2 duration-500">
+                                        <a href="../pages/blog_right.html" class="text-sm text-[#5A5A5A] hover:text-[#FCBBBF] duration-500">Blog Right Sidebar</a>
+                                    </li>
+                                    <li class="py-2 px-4 hover:translate-x-2 duration-500">
+                                        <a href="../pages/blog_left.html" class="text-sm text-[#5A5A5A] hover:text-[#FCBBBF] duration-500">Blog Left Sidebar</a>
+                                    </li>
+                                    <li class="py-2 px-4 hover:translate-x-2 duration-500">
+                                        <a href="../pages/blog_without_sidebar.html" class="text-sm text-[#5A5A5A] hover:text-[#FCBBBF] duration-500">Blog Without Sidebar</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="flex items-center p-6 dropdown relative group">
+                            <a href="#" class="hover:text-[#FCBBBF] duration-500">Shop</a>
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                stroke="currentColor" class="w-3 h-3 ml-1">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+                            </svg>
+                            <div class="dropdown-content absolute top-[80%] left-0 bg-white opacity-0 invisible group-hover:opacity-100 group-hover:visible rounded-xl duration-500">
+                                <ul style="width: 200px; height: 150px;">
+                                    <li class="py-2 px-4 hover:translate-x-2 duration-500">
+                                        <a href="../pages/shop_with_sidebar.html" class="text-sm text-[#5A5A5A] hover:text-[#FCBBBF] duration-500">Shop With Sidebar</a>
+                                    </li>
+                                    <li class="py-2 px-4 hover:translate-x-2 duration-500">
+                                        <a href="../pages/shop-single.html" class="text-sm text-[#5A5A5A] hover:text-[#FCBBBF] duration-500">Shop Single</a>
+                                    </li>
+                                    <li class="py-2 px-4 hover:translate-x-2 duration-500">
+                                        <a href="../pages/cart.html" class="text-sm text-[#5A5A5A] hover:text-[#FCBBBF] duration-500">cart</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="flex items-center p-6 dropdown relative group">
+                            <a href="#" class="hover:text-[#FCBBBF] duration-500">Elements</a>
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                stroke="currentColor" class="w-3 h-3 ml-1">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+                            </svg>
+                            <div class="dropdown-content absolute top-[80%] left-0 bg-white opacity-0 invisible group-hover:opacity-100 group-hover:visible rounded-xl duration-500">
+                                <ul style="width: 200px; height: 330px;">
+                                    <li class="py-2 px-4 hover:translate-x-2 duration-500">
+                                        <a href="../pages/accordian.html" class="text-sm text-[#5A5A5A] hover:text-[#FCBBBF] duration-500">Accordions</a>
+                                    </li>
+                                    <li class="py-2 px-4 hover:translate-x-2 duration-500">
+                                        <a href="./pages/progress.html" class="text-sm text-[#5A5A5A] hover:text-[#FCBBBF] duration-500">Progress Bar</a>
+                                    </li>
+                                    <li class="py-2 px-4 hover:translate-x-2 duration-500">
+                                        <a href="../pages/countdown.html" class="text-sm text-[#5A5A5A] hover:text-[#FCBBBF] duration-500">CountDown</a>
+                                    </li>
+                                    <li class="py-2 px-4 hover:translate-x-2 duration-500">
+                                        <a href="../pages/team.html" class="text-sm text-[#5A5A5A] hover:text-[#FCBBBF] duration-500">Team</a>
+                                    </li>
+                                    <li class="py-2 px-4 hover:translate-x-2 duration-500">
+                                        <a href="../pages/pricing.html" class="text-sm text-[#5A5A5A] hover:text-[#FCBBBF] duration-500">Pricing</a>
+                                    </li>
+                                    <li class="py-2 px-4 hover:translate-x-2 duration-500">
+                                        <a href="../pages/testimionals.html" class="text-sm text-[#5A5A5A] hover:text-[#FCBBBF] duration-500">Testimonials</a>
+                                    </li>
+                                    <li class="py-2 px-4 hover:translate-x-2 duration-500">
+                                        <a href="../pages/clients.html" class="text-sm text-[#5A5A5A] hover:text-[#FCBBBF] duration-500">Clients</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </nav>
+                <div class="flex justify-end">
+                    <a href="#" class="text-white text-lg font-medium ml-60 py-2 hover:text-[#FCBBBF] duration-500">cart items</a>
+                    <i class="fa-solid fa-basket-shopping text-xl text-[#FCBBBF] ml-5 py-2"></i>
+                </div>
+            </div>
+        </div>
+    </header>
+    <main>
+         <!-- banner -->
+         <section style="background-image: url('../images/juice-bar/h2-rev-background-img-2.jpg'); width: 100%; height: 850px;" class="bg-no-repeat bg-cover">
+            <div class="container mx-auto">
+                <img src="../images/juice-bar/b-5.png" alt="b-5" class="absolute top-40 left-40">
+                <img src="../images/juice-bar/b-4.png" alt="b-4" class="absolute top-80 left-36">
+                <img src="../images/juice-bar/b-3.png" alt="b-3" class="absolute top-[500px] left-3">
+                <img src="../images/juice-bar/b-8.png" alt="b-8" class="absolute top-[750px] left-40">
+                <img src="../images/juice-bar/b-2.png" alt="b-2" class="absolute top-40 right-32">
+                <img src="../images/juice-bar/b-1.png" alt="b-1" class="absolute top-[550px] right-5">
+                <img src="../images/juice-bar/b-7.png" alt="b-7" class="absolute bottom-40 right-0">
+                <img src="../images/juice-bar/b-6.png" alt="b-6" class="absolute bottom-5 right-20">
+            </div>
+            <img src="../images/main-rev-image-6.png" alt="main-rev-image-6" class="absolute top-[830px]" style="width: 100%;">
+        </section>
+        <section style="background-image: url('../images/juice-bar/frappe-juicebar-h-test-1.jpg'); width: 100%; height: 903px;" class="bg-no-repeat bg-cover">
+            <div class="container mx-auto">
+                <div>
+                    <img src="../images/juice-bar/h2-img-1.png" alt="inner-img-1" class="mx-auto mt-40">
+                </div>
+                <div class="flex mt-20 mx-auto px-20">
+                    <div class="w-6/12 " data-aos="fade-right"
+                    data-aos-offset="300"
+                    data-aos-easing="ease-in-sine">
+                        <div class="flex">
+                            <img src="../images/h1-pricing-img-1.png" alt="">
+                            <div class="flex">
+                                <h2 class="text-[#5A5A5A] text-xl ml-5 font-semibold">Pink Smoothie</h2>
+                                <p class="text-[#5A5A5A] mt-1">..................................................................................................................................</p>
+                                <span class="text-[#5A5A5A] text-xl ml-4 font-bold">$11</span>
+                            </div>
+                        </div>
+                        <div>
+                            <p class="text-[#9C9C9C] ml-[102px] -mt-9">Lorem ipsum dolor, sit amet consectetur elit. </p>
+                        </div>
+                        <div class="flex mt-10">
+                            <img src="../images/h1-pricing-img-2.png" alt="">
+                            <div class="flex">
+                                <h2 class="text-[#5A5A5A] text-xl ml-5 font-semibold">Orange Smoothie</h2>
+                                <p class="text-[#5A5A5A] mt-1">........................................................................................................................</p>
+                                <span class="text-[#5A5A5A] text-xl ml-4 font-bold">$13</span>
+                            </div>
+                        </div>
+                        <div>
+                            <p class="text-[#9C9C9C] ml-[102px] -mt-9">Lorem ipsum dolor, sit amet consectetur elit. </p>
+                        </div>
+                        <div class="flex mt-10">
+                            <img src="../images/h1-pricing-img-3.png" alt="">
+                            <div class="flex">
+                                <h2 class="text-[#5A5A5A] text-xl ml-5 font-semibold">White Smoothie</h2>
+                                <p class="text-[#5A5A5A] mt-1">..............................................................................................................................</p>
+                                <span class="text-[#5A5A5A] text-xl ml-4 font-bold">$12</span>
+                            </div>
+                        </div>
+                        <div>
+                            <p class="text[#9C9C9C]k ml-[102px] -mt-9">Lorem ipsum dolor, sit amet consectetur elit. </p>
+                        </div>
+                        <div class="flex mt-10">
+                            <img src="../images/h1-pricing-img-4.png" alt="">
+                            <div class="flex">
+                                <h2 class="text-[#5A5A5A] text-xl ml-5 font-semibold">Green Smoothie</h2>
+                                <p class="text-[#5A5A5A] mt-1">.............................................................................................................................</p>
+                                <span class="text-[#5A5A5A] text-xl ml-4 font-bold">$15</span>
+                            </div>
+                        </div>
+                        <div>
+                            <p class="text-[#9C9C9C] ml-[102px] -mt-9">Lorem ipsum dolor, sit amet consectetur elit. </p>
+                        </div>
+                    </div>
+                    <div class="w-6/12 " data-aos="fade-left"
+                    data-aos-offset="300"
+                    data-aos-easing="ease-in-sine">
+                        <div class="flex">
+                            <img src="../images/h1-pricing-img-5.png" alt="">
+                            <div class="flex">
+                                <h2 class="text-[#5A5A5A] text-xl ml-5 font-semibold"> 
+                                    Kiwi Smoothie	</h2>
+                                <p class="text-[#5A5A5A] mt-1">.................................................................................................................................</p>
+                                <span class="text-[#5A5A5A] text-xl ml-4 font-bold">$14</span>
+                            </div>
+                        </div>
+                        <div>
+                            <p class="text-[#9C9C9C] ml-[102px] -mt-9">Lorem ipsum dolor, sit amet consectetur elit. </p>
+                        </div>
+                        <div class="flex mt-10">
+                            <img src="../images/h1-pricing-img-6.png" alt="">
+                            <div class="flex">
+                                <h2 class="text-[#5A5A5A] text-xl ml-5 font-semibold"> 
+                                    Red Smoothie	</h2>
+                                <p class="text-[#5A5A5A] mt-1">................................................................................................................................</p>
+                                <span class="text-[#5A5A5A] text-xl ml-4 font-bold">$17</span>
+                            </div>
+                        </div>
+                        <div>
+                            <p class="text-[#9C9C9C] ml-[102px] -mt-9">Lorem ipsum dolor, sit amet consectetur elit. </p>
+                        </div>
+                        <div class="flex mt-10">
+                            <img src="../images/h1-pricing-img-7.png" alt="">
+                            <div class="flex">
+                                <h2 class="text-[#5A5A5A] text-xl ml-5 font-semibold">Smoothie</h2>
+                                <p class="text-[#5A5A5A] mt-1">..........................................................................................................................................</p>
+                                <span class="text-[#5A5A5A] text-xl ml-4 font-bold">$15</span>
+                            </div>
+                        </div>
+                        <div>
+                            <p class="text-[#9C9C9C] ml-[102px] -mt-9">Lorem ipsum dolor, sit amet consectetur elit. </p>
+                        </div>
+                        <div class="flex mt-10">
+                            <img src="../images/h1-pricing-img-8.png" alt="">
+                            <div class="flex">
+                                <h2 class="text-[#5A5A5A] text-xl ml-5 font-semibold">pink Smoothie</h2>
+                                <p class="text-[#5A5A5A] mt-1">.............................................................................................................................</p>
+                                <span class="text-[#5A5A5A] text-xl ml-4 font-bold">$12</span>
+                            </div>
+                        </div>
+                        <div>
+                            <p class="text-[#9C9C9C] ml-[102px] -mt-9">Lorem ipsum dolor, sit amet consectetur elit. </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section style="background: url('../images/juice-bar/h2-background-img-4.jpg'); width: 100%; height: 863px; position: relative;" class="bg-cover">
+            <div style="background-image: url('../images/juice-bar/h2-background-img-7.png'); width: 100%; height: 100%;;" class="absolute top-0 left-0 ">
+                <div class="container mx-auto">
+                    <div class="flex justify-center items-center mt-36">
+                        <div class="flex justify-center items-center max-xxl:overflow-hidden flex-col">
+                            <div>
+                                <img src="../images/juice-bar/heart.png" alt="h1-img-1" class="mb-3">
+                            </div>
+                            <div>
+                                <h1 class="text-5xl text-white  font-semibold mb-3">Our Awesome Team</h1>
+                            </div>
+                            <div>
+                                <p class="font-serif text-3xl text-white pb-10">Smoothie demo designed for you</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex px-40">
+                        <div class="w-4/12 py-10" data-aos="zoom-in">
+                            <div class="bg-white w-[380px] h-[386px]">
+                                <img src="../images/h2-team-img-1-1.png" alt="team" class="mx-auto">
+                                <div>
+                                    <h2 class="text-xl text-[#363636] mt-7 font-[500] mb-2 text-center">Sienna Smith</h2>
+                                    <span class="text-base text-[#9C9C9C] flex justify-center">Smothie lover</span>
+                                </div>
+                                    <div class="flex gap-4 justify-center items-center mt-4">
+                                        <div>
+                                            <i class="fa-brands fa-twitter text-black hover:text-[#9C9C9C] duration-500"></i>
+                                        </div>
+                                        <div>
+                                            <i class="fa-brands fa-facebook text-black hover:text-[#9C9C9C] duration-500"></i>
+                                        </div>
+                                        <div>
+                                            <i class="fa-solid fa-camera-retro text-black hover:text-[#9C9C9C] duration-500"></i>
+                                        </div>
+                                    </div>
+                            </div>
+                        </div>
+                        <div class="w-4/12 py-10" data-aos="zoom-in">
+                            <div class="bg-white w-[380px] h-[386px]">
+                                <img src="../images/h2-team-img-2.png" alt="team" class="mx-auto">
+                                <div>
+                                    <h2 class="text-xl text-[#363636] mt-7 font-[500] mb-2 text-center">Sienna Smith</h2>
+                                    <span class="text-base text-[#9C9C9C] flex justify-center">Smothie lover</span>
+                                </div>
+                                    <div class="flex gap-4 justify-center items-center mt-4">
+                                        <div>
+                                            <i class="fa-brands fa-twitter text-black hover:text-[#9C9C9C] duration-500"></i>
+                                        </div>
+                                        <div>
+                                            <i class="fa-brands fa-facebook text-black hover:text-[#9C9C9C] duration-500"></i>
+                                        </div>
+                                        <div>
+                                            <i class="fa-solid fa-camera-retro text-black hover:text-[#9C9C9C] duration-500"></i>
+                                        </div>
+                                    </div>
+                            </div>
+                        </div>
+                        <div class="w-4/12 py-10" data-aos="zoom-in">
+                            <div class="bg-white w-[380px] h-[386px]">
+                                <img src="../images/h2-team-img-3.png" alt="team" class="mx-auto">
+                                <div>
+                                    <h2 class="text-xl text-[#363636] mt-7 font-[500] mb-2 text-center">Sienna Smith</h2>
+                                    <span class="text-base text-[#9C9C9C] flex justify-center">Smothie lover</span>
+                                </div>
+                                    <div class="flex gap-4 justify-center items-center mt-4">
+                                        <div>
+                                            <i class="fa-brands fa-twitter text-black hover:text-[#9C9C9C] duration-500"></i>
+                                        </div>
+                                        <div>
+                                            <i class="fa-brands fa-facebook text-black hover:text-[#9C9C9C] duration-500"></i>
+                                        </div>
+                                        <div>
+                                            <i class="fa-solid fa-camera-retro text-black hover:text-[#9C9C9C] duration-500"></i>
+                                        </div>
+                                    </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section style="background-image: url('../images/juice-bar/h2-background-img-2b.jpg'); width: 100%; height: 1300px;" class="bg-no-repeat bg-cover">
+            <div class="container mx-auto">
+                <div class="flex justify-center items-center mt-32">
+                    <div class="flex justify-center items-center max-xxl:overflow-hidden flex-col">
+                        <div>
+                            <img src="../images/h1-img-1.png" alt="h1-img-1" class="mb-3">
+                        </div>
+                        <div>
+                            <h1 class="text-5xl text-[#5A5A5A] font-semibold mb-3">Smoothies & Juices</h1>
+                        </div>
+                        <div>
+                            <p class="font-serif text-3xl text-[#5A5A5A] pb-10">Smoothie demo designed for you</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex flex-wrap px-40 mt-10">
+                    <div class="w-3/12"data-aos="zoom-in">
+                        <div>
+                            <div class="product-img" style="width: 277px; height: 320px;">
+                                <div class="product-item-icon-box">
+                                    <i class="fa-solid fa-wine-glass-empty"></i>
+                                </div>
+                                <img src="../images/product-img-1-768x871.jpg" alt="" class="w-[277px] h-80 rounded-md">
+                            </div>
+                           
+                            <div class="items-center flex justify-center">
+                                <a href="#" class="mt-3 text-[#5A5A5A] text-xl" style="font-weight: 500;">Hippie Chick</a>
+                            </div>
+                            <div class="flex text-[#FBBCC0] items-center justify-center mt-3">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4">
+                                    <path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005Z" clip-rule="evenodd" />
+                                </svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4">
+                                    <path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005Z" clip-rule="evenodd" />
+                                </svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4">
+                                    <path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005Z" clip-rule="evenodd" />
+                                </svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4">
+                                    <path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005Z" clip-rule="evenodd" />
+                                </svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M11.48 3.499a.562.562 0 0 1 1.04 0l2.125 5.111a.563.563 0 0 0 .475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 0 0-.182.557l1.285 5.385a.562.562 0 0 1-.84.61l-4.725-2.885a.562.562 0 0 0-.586 0L6.982 20.54a.562.562 0 0 1-.84-.61l1.285-5.386a.562.562 0 0 0-.182-.557l-4.204-3.602a.562.562 0 0 1 .321-.988l5.518-.442a.563.563 0 0 0 .475-.345L11.48 3.5Z" />
+                                </svg>                                                
+                            </div>
+                            <div class="items-center flex justify-center mt-2 text-[#9C9C9C]">
+                                € 12.00
+                            </div>
+                        </div>
+                    </div>
+                    <div class="w-3/12 max-sm:w-full"data-aos="zoom-in">
+                        <div class="product-img"style="width: 277px; height: 320px;">
+                            <div class="product-item-icon-box">
+                                <i class="fa-solid fa-wine-glass-empty"></i>
+                            </div>
+                            <img src="../images/product-img-2-768x871.jpg" alt="" class="w-[277px] h-80 rounded-md">
+                        </div>
+                        <div class="items-center flex justify-center">
+                            <a href="#" class="mt-3 text-[#5A5A5A] text-xl" style="font-weight: 500;">Healthy Time</a>
+                        </div>
+                        <div class="flex text-[#FBBCC0] items-center justify-center mt-3">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4">
+                                <path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005Z" clip-rule="evenodd" />
+                            </svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4">
+                                <path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005Z" clip-rule="evenodd" />
+                            </svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4">
+                                <path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005Z" clip-rule="evenodd" />
+                            </svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4">
+                                <path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005Z" clip-rule="evenodd" />
+                            </svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M11.48 3.499a.562.562 0 0 1 1.04 0l2.125 5.111a.563.563 0 0 0 .475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 0 0-.182.557l1.285 5.385a.562.562 0 0 1-.84.61l-4.725-2.885a.562.562 0 0 0-.586 0L6.982 20.54a.562.562 0 0 1-.84-.61l1.285-5.386a.562.562 0 0 0-.182-.557l-4.204-3.602a.562.562 0 0 1 .321-.988l5.518-.442a.563.563 0 0 0 .475-.345L11.48 3.5Z" />
+                              </svg>                                                
+                        </div>
+                        <div class="items-center flex justify-center mt-2 text-[#9C9C9C]">
+                            € 8.00
+                        </div>
+                    </div>
+                    <div class="w-3/12"data-aos="zoom-in">
+                        <div class="product-img"style="width: 277px; height: 320px;">
+                            <div class="product-item-icon-box">
+                                <i class="fa-solid fa-wine-glass-empty"></i>
+                            </div>
+                            <img src="../images/product-img-3-768x871.jpg" alt="" class="w-[277px] h-80 rounded-md">
+                        </div>
+                        <div class="items-center flex justify-center">
+                            <a href="#" class="mt-3 text-[#5A5A5A] text-xl" style="font-weight: 500;">Smootheory</a>
+                        </div>
+                        <div class="flex text-[#FBBCC0] items-center justify-center mt-3">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4">
+                                <path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005Z" clip-rule="evenodd" />
+                            </svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4">
+                                <path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005Z" clip-rule="evenodd" />
+                            </svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4">
+                                <path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005Z" clip-rule="evenodd" />
+                            </svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4">
+                                <path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005Z" clip-rule="evenodd" />
+                            </svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M11.48 3.499a.562.562 0 0 1 1.04 0l2.125 5.111a.563.563 0 0 0 .475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 0 0-.182.557l1.285 5.385a.562.562 0 0 1-.84.61l-4.725-2.885a.562.562 0 0 0-.586 0L6.982 20.54a.562.562 0 0 1-.84-.61l1.285-5.386a.562.562 0 0 0-.182-.557l-4.204-3.602a.562.562 0 0 1 .321-.988l5.518-.442a.563.563 0 0 0 .475-.345L11.48 3.5Z" />
+                              </svg>                                                
+                        </div>
+                        <div class="items-center flex justify-center mt-2 text-[#9C9C9C]">
+                            € 25.00
+                        </div>
+                    </div>
+                    <div class="w-3/12 "data-aos="zoom-in">
+                        <div class="product-img" style="width: 277px; height: 320px;">
+                            <div class="product-item-icon-box">
+                                <i class="fa-solid fa-wine-glass-empty"></i>
+                            </div>
+                            <img src="../images/product-img-4-768x871.jpg" alt="" class="w-[277px] h-80 rounded-md">
+                        </div>
+                        <div class="items-center flex justify-center">
+                            <a href="#" class="mt-3 text-[#5A5A5A] text-xl" style="font-weight: 500;">Smashed Bananas</a>
+                        </div>
+                        <div class="flex text-[#FBBCC0] items-center justify-center mt-3">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4">
+                                <path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005Z" clip-rule="evenodd" />
+                            </svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4">
+                                <path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005Z" clip-rule="evenodd" />
+                            </svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4">
+                                <path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005Z" clip-rule="evenodd" />
+                            </svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4">
+                                <path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005Z" clip-rule="evenodd" />
+                            </svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M11.48 3.499a.562.562 0 0 1 1.04 0l2.125 5.111a.563.563 0 0 0 .475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 0 0-.182.557l1.285 5.385a.562.562 0 0 1-.84.61l-4.725-2.885a.562.562 0 0 0-.586 0L6.982 20.54a.562.562 0 0 1-.84-.61l1.285-5.386a.562.562 0 0 0-.182-.557l-4.204-3.602a.562.562 0 0 1 .321-.988l5.518-.442a.563.563 0 0 0 .475-.345L11.48 3.5Z" />
+                              </svg>                                                
+                        </div>
+                        <div class="items-center flex justify-center mt-2 text-[#9C9C9C]">
+                            € 32.00
+                        </div>
+                    </div>
+                    <div class="w-3/12 mt-16 "data-aos="zoom-in">
+                        <div class="product-img" style="width: 277px; height: 320px;">
+                            <div class="product-item-icon-box">
+                                <i class="fa-solid fa-wine-glass-empty"></i>
+                            </div>
+                            <img src="../images/product-img-5-768x871.jpg" alt="" class="w-[277px] h-80 rounded-md">
+                        </div>
+                        <div class="items-center flex justify-center">
+                            <a href="#" class="mt-3 text-[#5A5A5A] text-xl" style="font-weight: 500;">Strawesome Smoothie</a>
+                        </div>
+                        <div class="flex text-[#FBBCC0] items-center justify-center mt-3">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4">
+                                <path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005Z" clip-rule="evenodd" />
+                            </svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4">
+                                <path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005Z" clip-rule="evenodd" />
+                            </svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4">
+                                <path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005Z" clip-rule="evenodd" />
+                            </svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4">
+                                <path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005Z" clip-rule="evenodd" />
+                            </svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M11.48 3.499a.562.562 0 0 1 1.04 0l2.125 5.111a.563.563 0 0 0 .475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 0 0-.182.557l1.285 5.385a.562.562 0 0 1-.84.61l-4.725-2.885a.562.562 0 0 0-.586 0L6.982 20.54a.562.562 0 0 1-.84-.61l1.285-5.386a.562.562 0 0 0-.182-.557l-4.204-3.602a.562.562 0 0 1 .321-.988l5.518-.442a.563.563 0 0 0 .475-.345L11.48 3.5Z" />
+                              </svg>                                                
+                        </div>
+                        <div class="items-center flex justify-center mt-2 text-[#9C9C9C]">
+                            € 14.00
+                        </div>
+                    </div>
+                    <div class="w-3/12 mt-16"data-aos="zoom-in">
+                        <div class="product-img" style="width: 277px; height: 320px;">
+                            <div class="product-item-icon-box">
+                                <i class="fa-solid fa-wine-glass-empty"></i>
+                            </div>
+                            <img src="../images/product-img-6-768x871.jpg" alt="" class="w-[277px] h-80 rounded-md">
+                        </div>
+                        <div class="items-center flex justify-center">
+                            <a href="#" class="mt-3 text-[#5A5A5A] text-xl" style="font-weight: 500;">The Juice Box</a>
+                        </div>
+                        <div class="flex text-[#FBBCC0] items-center justify-center mt-3">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4">
+                                <path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005Z" clip-rule="evenodd" />
+                            </svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4">
+                                <path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005Z" clip-rule="evenodd" />
+                            </svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4">
+                                <path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005Z" clip-rule="evenodd" />
+                            </svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4">
+                                <path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005Z" clip-rule="evenodd" />
+                            </svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M11.48 3.499a.562.562 0 0 1 1.04 0l2.125 5.111a.563.563 0 0 0 .475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 0 0-.182.557l1.285 5.385a.562.562 0 0 1-.84.61l-4.725-2.885a.562.562 0 0 0-.586 0L6.982 20.54a.562.562 0 0 1-.84-.61l1.285-5.386a.562.562 0 0 0-.182-.557l-4.204-3.602a.562.562 0 0 1 .321-.988l5.518-.442a.563.563 0 0 0 .475-.345L11.48 3.5Z" />
+                              </svg>                                                
+                        </div>
+                        <div class="items-center flex justify-center mt-2 text-[#9C9C9C]">
+                            € 15.00
+                        </div>
+                    </div>
+                    <div class="w-3/12 mt-16"data-aos="zoom-in">
+                        <div class="product-img" style="width: 277px; height: 320px;">
+                            <div class="product-item-icon-box">
+                                <i class="fa-solid fa-wine-glass-empty"></i>
+                            </div>
+                            <img src="../images/product-img-7-768x871.jpg" alt="" class="w-[277px] h-80 rounded-md">
+                        </div>
+                        <div class="items-center flex justify-center">
+                            <a href="#" class="mt-3 text-[#5A5A5A] text-xl" style="font-weight: 500;">Green Machine</a>
+                        </div>
+                        <div class="flex text-[#FBBCC0] items-center justify-center mt-3">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4">
+                                <path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005Z" clip-rule="evenodd" />
+                            </svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4">
+                                <path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005Z" clip-rule="evenodd" />
+                            </svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4">
+                                <path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005Z" clip-rule="evenodd" />
+                            </svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4">
+                                <path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005Z" clip-rule="evenodd" />
+                            </svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M11.48 3.499a.562.562 0 0 1 1.04 0l2.125 5.111a.563.563 0 0 0 .475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 0 0-.182.557l1.285 5.385a.562.562 0 0 1-.84.61l-4.725-2.885a.562.562 0 0 0-.586 0L6.982 20.54a.562.562 0 0 1-.84-.61l1.285-5.386a.562.562 0 0 0-.182-.557l-4.204-3.602a.562.562 0 0 1 .321-.988l5.518-.442a.563.563 0 0 0 .475-.345L11.48 3.5Z" />
+                              </svg>                                                
+                        </div>
+                        <div class="items-center flex justify-center mt-2 text-[#9C9C9C]">
+                            € 13.00
+                        </div>
+                    </div>
+                    <div class="w-3/12 mt-16"data-aos="zoom-in">
+                        <div class="product-img" style="width: 277px; height: 320px;">
+                            <div class="product-item-icon-box">
+                                <i class="fa-solid fa-wine-glass-empty"></i>
+                            </div>
+                            <img src="../images/product-img-8-768x871.jpg" alt="" class="w-[277px] h-80 rounded-md">
+                        </div>
+                        <div class="items-center flex justify-center">
+                            <a href="#" class="mt-3 text-[#5A5A5A] text-xl" style="font-weight: 500;">Summer Time</a>
+                        </div>
+                        <div class="flex text-[#FBBCC0] items-center justify-center mt-3">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4">
+                                <path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005Z" clip-rule="evenodd" />
+                            </svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4">
+                                <path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005Z" clip-rule="evenodd" />
+                            </svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4">
+                                <path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005Z" clip-rule="evenodd" />
+                            </svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4">
+                                <path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005Z" clip-rule="evenodd" />
+                            </svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M11.48 3.499a.562.562 0 0 1 1.04 0l2.125 5.111a.563.563 0 0 0 .475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 0 0-.182.557l1.285 5.385a.562.562 0 0 1-.84.61l-4.725-2.885a.562.562 0 0 0-.586 0L6.982 20.54a.562.562 0 0 1-.84-.61l1.285-5.386a.562.562 0 0 0-.182-.557l-4.204-3.602a.562.562 0 0 1 .321-.988l5.518-.442a.563.563 0 0 0 .475-.345L11.48 3.5Z" />
+                              </svg>                                                
+                        </div>
+                        <div class="items-center flex justify-center mt-2 text-[#9C9C9C]">
+                            € 15.00
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section style="background-image: url('../images/juice-bar/h2-background-img-3a.jpg'); width: 100%; height: 300px;" class="bg-cover bg-no-repeat">
+            <div class="container mx-auto">
+                <div class="flex">
+                    <div class="w-full mt-24">
+                        <img src="../images/h2-carousel-img-1.png" alt="carousel-item" class="bg-repeat hover:translate-y-5 duration-500">
+                    </div>
+                    <div class="w-full mt-24">
+                        <img src="../images/h2-carousel-img-2.png" alt="carousel-item" class="bg-repeat hover:translate-y-5 duration-500">
+                    </div>
+                    <div class="w-full mt-24">
+                        <img src="../images/h2-carousel-img-3.png" alt="carousel-item" class="bg-repeat hover:translate-y-5 duration-500">
+                    </div>
+                    <div class="w-full mt-24">
+                        <img src="../images/h2-carousel-img-4.png" alt="carousel-item" class="bg-repeat hover:translate-y-5 duration-500">
+                    </div>
+                    <div class="w-full mt-24">
+                        <img src="../images/h2-carousel-img-5.png" alt="carousel-item" class="bg-repeat hover:translate-y-5 duration-500">
+                    </div>
+                    <div class="w-full mt-24">
+                        <img src="../images/h2-carousel-img-6.png" alt="carousel-item" class="bg-repeat hover:translate-y-5 duration-500">
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section>
+            <div class="container mx-auto">
+                <div class="flex">
+                    <div class="w-6/12">
+                        <div class="py-28 px-20">
+                            <h2 class="text-[40px] font-semibold text-left text-[#5A5A5A] mb-6">Say Hi!</h2>
+                            <p class="text-[#9C9C9C] mb-8">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse dui ante,consectetur non scelerisque a, ultricies id justo.</p>
+                            <div class="flex">
+                                <div class="w-6/12">
+                                    <div>
+                                        <h2 class="text-[30px] font-[500] text-left text-[#5A5A5A] mb-2">Berlin</h2>
+                                        <div>
+                                            <span class="text-[#9C9C9C] hover:text-[#ACE9B0] duration-500 mb-8 cursor-pointer">
+                                                Rosenthaler Straße 32, Berlin 10178
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="w-6/12">
+                                    <div>
+                                        <h2 class="text-[30px] font-[500] text-left text-[#5A5A5A] mb-2">London</h2>
+                                        <div>
+                                            <span class="text-[#9C9C9C] hover:text-[#ACE9B0] duration-500 cursor-pointer" style="margin-bottom: 10px;">
+                                                Wembley, London, HA9 0WS
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="w-6/12">
+                        <div class=" py-28">
+                            <h3 class="text-base  text-left text-[#9C9C9C] mb-2">
+                                Name (required)</h2>
+                            <input type="text" class="bg-transparent border-2 placeholder:text-[#9C9C9C] rounded-md border-dotted border-[#9C9C9C] p-3 w-[609px] mb-8" placeholder="" >
+                            <h3 class="text-base  text-left text-[#9C9C9C] mb-2">
+                                E-mail (required)</h2>
+                            <input type="text" class="bg-transparent border-2 placeholder:text-[#9C9C9C] rounded-md border-dotted border-[#9C9C9C] p-3 w-[609px] mb-8" placeholder="" >
+                            <h3 class="text-base  text-left text-[#9C9C9C] mb-2">
+                                Subject</h2>
+                            <textarea placeholder=""  class="bg-transparent border-2 placeholder:text-[#9C9C9C] rounded-md border-dotted border-[#9C9C9C] p-3 w-[609px] h-[132px] mb-10"  required=""></textarea>
+                            <a href="#" class="bg-[#ACE9B0] rounded-lg text-white font-semibold hover:bg-[#FBBCC0] duration-500 " style="padding: 20px 60px;">
+                               Send
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- map -->
+        <section>
+            <div class="w-full">
+                <div class="h-[600px]">
+                    <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d238133.18800756568!2d72.65748445425247!3d21.159120355995483!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be04e59411d1563%3A0xfe4558290938b042!2sSurat%2C%20Gujarat!5e0!3m2!1sen!2sin!4v1709028924857!5m2!1sen!2sin" style="width: 100%; height: 100%; filter: grayscale(10);"></iframe>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer class="bg-black" style="height: 680px;">
+        <div class="container mx-auto">
+            <div class="flex">
+                <div class="w-3/12 ml-56">
+                    <div>
+                        <p class="text-white pt-32 text-xl">Dont be shy, say HI!</p>
+                    </div>
+                    <div>
+                        <ul class="text-white">
+                            <li class="flex items-cente pb-3 mt-10 hover:text-[#ABE9B0] duration-500 hover:translate-x-2 cursor-pointer">
+                                <i class="fa-solid fa-phone"></i>
+                                <h2 class="ml-3 text-sm">1-677-124-44227, 1-787-124-445207</h2>
+                            </li>
+                            <li class="flex items-center pt-3 pb-3 hover:text-[#ABE9B0] duration-500 hover:translate-x-2 cursor-pointer">
+                                <i class="fa-regular fa-clock"></i>
+                                <h2 class="ml-3 text-sm">Mon - Sat 8.00 - 18.00 Sunday CLOSED</h2>
+                            </li>
+                            <li class="flex items-center pt-3 pb-3 hover:text-[#ABE9B0] duration-500 hover:translate-x-2 cursor-pointer">
+                                <i class="fa-solid fa-thumbtack"></i>
+                                <h2 class="ml-3 text-sm">184 Main Collins Street West Victoria 8007</h2>
+                            </li>
+                        </ul>
+                        <div>
+                            <img src="../images/footer-img-1.png" alt="footer-img-1" class="mt-6">
+                        </div>
+                    </div>
+                </div>
+                <div class="w-3/12 pt-32">
+                    <div>
+                        <h4 class="text-white text-xl pb-10">Opening Hours</h4>
+                    </div>
+                    <ul class="mb-13 text-white">
+                        <li class="pb-4 hover:text-[#ABE9B0] duration-500 hover:translate-x-2 cursor-pointer">Monday…………………………………..8: 00 – 18: 00</li>
+                        <li class="pb-4 hover:text-[#ABE9B0] duration-500 hover:translate-x-2 cursor-pointer">Tuesday…………………………………..8: 00 – 18: 00</li>
+                        <li class="pb-4 hover:text-[#ABE9B0] duration-500 hover:translate-x-2 cursor-pointer">Wednesday……………………………..8: 00 – 18: 00</li>
+                        <li class="pb-4 hover:text-[#ABE9B0] duration-500 hover:translate-x-2 cursor-pointer">Thursday…………………………………8: 00 – 18: 00</li>
+                        <li class="pb-4 hover:text-[#ABE9B0] duration-500 hover:translate-x-2 cursor-pointer">Friday………………………………………8: 00 – 18: 00</li>
+                        <li class="pb-4 hover:text-[#ABE9B0] duration-500 hover:translate-x-2 cursor-pointer">Saturday………………………………….8: 00 – 18: 00</li>
+                        <li class="pb-4 hover:text-[#ABE9B0] duration-500 hover:translate-x-2 cursor-pointer">Sunday…………………………………………….CLOSED</li>
+                    </ul>
+                </div>
+                <div class="w-3/12 pt-32">
+                    <div>
+                        <h4 class="text-white text-xl pb-10">Instagram</h4>
+                    </div>
+                    <div class="w-full flex gap-1">
+                        <div class="w-4/12">
+                            <img src="../images/g-1.jpg" alt="1">
+                        </div>
+                        <div class="w-4/12">
+                            <img src="../images/g-2.jpg" alt="2">
+                        </div>
+                        <div class="w-4/12">
+                            <img src="../images/g-3.jpg" alt="3">
+                        </div>
+                    </div>
+                    <div class="w-full flex gap-1 mt-1">
+                        <div class="w-4/12">
+                            <img src="../images/g-5.jpg" alt="5">
+                        </div>
+                        <div class="w-4/12">
+                            <img src="../images/g-6.jpg" alt="6">
+                        </div>
+                        <div class="w-4/12">
+                            <img src="../images/g-7.jpg" alt="7">
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div style="border-bottom: 1px solid #2C2C2C;" class="mt-36"></div>
+            <div class="container mx-auto">
+                <div class="flex justify-between py-2">
+                    <div class="w-3/12  ml-56">
+                        <a href="#" class="text-sm text-[#9C9C9C]">© 2024 Qode Interactive, <span class="text-[#ABE9B0]">Ragini Rakholiya</span></a>
+                    </div>
+                    <div class="w-3/12">
+                        <div class="flex gap-8 text-lg text-[#9C9C9C] py-2">
+                            <i class="fa-brands fa-facebook"></i>
+                            <i class="fa-brands fa-twitter"></i>
+                            <i class="fa-brands fa-instagram"></i>
+                            <i class="fa-brands fa-youtube"></i>
+                            <i class="fa-brands fa-linkedin"></i>
+                        </div>
+                    </div>
+                    <div class="w-3/12">
+                        <a href="#" class="text-[#9C9C9C] text-sm">All Rights Reserved</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- scroll-bar -->
+    <style>
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background-color: #d6d6d6b3;
+            -webkit-border-radius: 10px;
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            -webkit-border-radius: 10px;
+            border-radius: 10px;
+            background: #ABE9B0;
+        }
+    </style>
+     <!-- jquery -->
+     <script src="../js/jquery-3.7.1.min.js"></script>
+     <!-- cursor -->
+     <script src="https://cdn.jsdelivr.net/gh/hmongouachon/NodeCursor/src/nodecursor-jquery.js"></script>
+     <script src="../js/script.js"></script>
+      <!-- custom cursor -->
+      <div class="node" id="node"></div>
+      <div class="cursor" id="cursor"></div>
+       <!-- header -->
+       <script>
+        //fixed header
+        $(window).scroll(function(){
+        if($(this).scrollTop() >300){
+            $(".header").addClass("fixed-header");
+        }
+        else{
+            $(".header").removeClass("fixed-header");
+        }
+    });
+    //up to down 
+    $(".up-button").click(function(){
+            $('html, body').animate({scrollTop : 0},800);
+    });
+    //up-button
+    $(window).scroll(function(){
+        if($(this).scrollTop()){
+            $(".up-button").fadeIn();
+        }
+        else
+        {
+            $(".up-button").fadeOut();
+        }
+    });            
+    </script>
+    <!-- AOS-animation -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+    AOS.init();
+    </script>
+</body>
+</html>
